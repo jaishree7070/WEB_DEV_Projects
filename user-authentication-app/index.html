@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User-Authentication-App-demo</title>
+</head>
+<body>
+    <style>
+    body{
+      background-color: royalblue;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: black;
+      padding: 30px;
+      line-height: 3rem;
+    }
+  </style>
+  <h2>User-Authentication-App</h2>
+  <div class="login">
+    <form action="#">
+      <h1>Sign-in</h1>
+      <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" placeholder="enter your mail">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password">
+    </div>
+    <div>
+      <input type="submit" value="register" onclick="store()">
+    </div>
+    </form>
+  </div>
+  <hr>
+  <div class="login">
+    <form action="#">
+      <h1>Log-in</h1>
+      <div>
+      <label for="login-email">Email:</label>
+      <input type="email" name="login-email" id="login-email" placeholder="enter your email">
+    </div>
+    <div>
+      <label for="login-password">Password:</label>
+      <input type="password" name="login-password" id="login-password">
+    </div>
+    <div>
+      <input type="submit" value="Sign-in" onclick="check()">
+    </div>
+    </form>
+  </div>
+
+  <script>
+    function store(){
+      const email = document.querySelector("#email").value;
+      const password = document.querySelector("#password").value;
+      // console.log(email, password)
+      sessionStorage.setItem(email, password);
+      alert("User details stored successfully");
+    }
+
+    function check(){
+      const email = document.querySelector("#login-email").value;
+      const password = document.querySelector("#login-password").value;
+      const sessionStorageEmail  = sessionStorage.getItem(email)
+      if(!sessionStorageEmail){
+        alert("Not a valid email...")
+      }else{
+        const localStoragePassword = sessionStorage.getItem(password);
+        if(password  === localStoragePassword){
+          alert("Access Granted... ");
+        }else{
+          alert("Access Denied...");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
