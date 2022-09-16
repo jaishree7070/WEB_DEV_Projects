@@ -67,7 +67,7 @@
       if(!sessionStorageEmail){
         alert("Not a valid email...")
       }else{
-        const localStoragePassword = sessionStorage.getItem(password);
+        const localStoragePassword = sessionStorage.getItem(email);
         if(password  === localStoragePassword){
           alert("Access Granted... ");
         }else{
